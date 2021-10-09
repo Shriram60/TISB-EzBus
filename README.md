@@ -1,2 +1,1 @@
-# TISB-EzBus
-ezez
+Will put a more detailed readme in the future
