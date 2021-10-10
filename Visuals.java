@@ -6,12 +6,14 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.util.ConcurrentModificationException;
+
 public class Visuals extends Application {
   final int r = 8;
   final Color stationColor =Color.WHITE;
   final Color busColor = Color.rgb(255, 191, 0);
   final Color dropColor = Color.RED;
-  final Color pickColor = Color.LIGHTGREEN;
+  final Color pickColor = Color.rgb(0,100,0);
   Circle[] buses;
   Circle[] stations;
   Line[] roads;
@@ -19,7 +21,6 @@ public class Visuals extends Application {
   @Override
   public void start(final Stage primaryStage) {
     g = new Grid();
-    
     stations= new Circle[g.stations.size()];
     buses = new Circle[g.buses.size()];
     roads = new Line[10];
@@ -45,7 +46,6 @@ public class Visuals extends Application {
         road.setStroke(Color.WHITE);
         roads[i] =road;
     }
-    
     Group main = new Group(stations);
     main.getChildren().add(new Group(roads));
     main.getChildren().add(new Group(buses));
@@ -53,7 +53,11 @@ public class Visuals extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-        g.iter();
+            try{
+                g.iter();
+            }catch(ConcurrentModificationException e){
+
+            }
             for(int i = 0;i<stations.length;i++){
                 stations[i].setFill(stationColor);
             }
@@ -62,7 +66,8 @@ public class Visuals extends Application {
                 Node node = buses[i];
                 node.setTranslateX(b.x*100-70);
                 node.setTranslateY(b.y*100-70);
-                for(PickupPoint p:b.pickup){
+                for(int i1=0;i1<b.pickup.size();i1++){
+                  PickupPoint p = b.pickup.get(i1);
                     int index = 0;
                     for(int j = 0;j<g.stations.size();j++){
                         Position p2 = g.stations.get(j);
@@ -71,19 +76,19 @@ public class Visuals extends Application {
                         }
                     }
                 }
-                for(Position p:b.path.queue){
-                    int index = 0;
+                for(int i1=0;i1<b.path.queue.size();i1++){
+                  Position p = b.path.queue.get(i1);
                     for(int j = 0;j<g.stations.size();j++){
                         Position p2 = g.stations.get(j);
                         if(p.x == p2.x&&p.y==p2.y){
                             if(stations[j].getFill()!=pickColor){
                                 stations[j].setFill(dropColor);
                             }
-                            
+
                         }
                     }
                 }
-                
+
             }
     }));
     timeline.setCycleCount(Animation.INDEFINITE);
