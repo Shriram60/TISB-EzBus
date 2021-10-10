@@ -1,6 +1,6 @@
 EzBus is a new and effective way of transport in a smaller area in which a bus or any other means of public transport will move from station to station based on people’s needs and will be more efficient and user-friendly than the current means of public transport.
 
-Developed in Java using JavaFX by 'ThatOneTeam' - Saahil, Siddharth and Shriram
+Developed in Java using JavaFX by 'ThatOneTeam' - Saahil, Siddharth and Shriram for TISB Hackathon 2.0
 
 This is a simulation that showcases the idea with a simplified map and assuming equidistant intersections
 Run the file Visuals
