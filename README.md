@@ -8,6 +8,8 @@ Run the file Visuals
 ->Out of these stations that are shown in green are pickup locations
 ->The stations shown in red are drop locations
 -> The moving yellow dot shows the current location of the bus
+->Outputs on console show when the system is ready and gives details about the pickup calls and bus destination
 
+The program will take some time to actually show the visuals/console. Please be patient. This is caused by the initialisation of the sound system
 It may take some time for the bus to start moving as the location and time of pickup requests is random, as is where the picked up people want to go.
 For viewing the code, open the .java files in any text editor/ an IDE like BlueJ

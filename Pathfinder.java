@@ -25,6 +25,8 @@ public class Pathfinder
   //To update the bus' goal
   public Position update(int x, int y)
   {
+    int c = 0;
+    int cIndex = 0;
     int g = 0;
     int index= 0;
     for(int i = 0; i < queue.size(); i++)
@@ -44,17 +46,30 @@ public class Pathfinder
         g = score;
         index = i;
       }
+      if(d<c){
+           c = d;
+           cIndex = i;
+      }
     }
     if(queue.size() == 0)
     {
       return new Position(0, 0, -1);
     }
-    return queue.get(index);
+    Position p1 = queue.get(index);
+    Position p2 = queue.get(cIndex);
+    if(distance(x,y,p2.x,p2.y)+distance(p1,p2)==distance(x,y,p1.x,p1.y)){
+        return p2;
+    }
+    return p1;
   }
 
   //To caluclate the distance between the bus' and destination's positon
   public int distance(int x1, int y1, int x2, int y2)
   {
     return Math.abs(x1 - x2)+Math.abs(y1 - y2);
+  }
+  //To calculate distance between two points
+  public int distance(Position p1,Position p2){
+    return distance(p1.x,p1.y,p2.x,p2.y);
   }
 }
