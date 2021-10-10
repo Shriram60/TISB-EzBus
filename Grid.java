@@ -60,10 +60,10 @@ public class Grid
     {
       Position pos = stations.get(s);
       PickupPoint point = new PickupPoint(pos.x, pos.y, num,goals);
-      System.out.println("New pickup point added at "+point.x+","+point.y+" with "+point.num+"people");
+      System.out.println("New pickup point added at "+point.x+","+point.y+" with "+point.num+" people");
       query(point);
     }
-    
+
   }
 
   //To scan the buses
@@ -108,7 +108,10 @@ public class Grid
   }
   public void iter()
   {
-    add();
+    if(Math.random()>0.5)
+    {
+      add();
+    }
     updateBuses();
   }
 }

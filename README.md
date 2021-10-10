@@ -9,4 +9,5 @@ Run the file Visuals
 ->The stations shown in red are drop locations
 -> The moving yellow dot shows the current location of the bus
 
+It may take some time for the bus to start moving as the location and time of pickup requests is random, as is where the picked up people want to go.
 For viewing the code, open the .java files in any text editor/ an IDE like BlueJ

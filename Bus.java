@@ -38,7 +38,7 @@ public class Bus
   {
     if(p.num <= max_cap - current_cap)
     {
-      
+
       addGoal(new Position(p.x, p.y, p.num));
       pickup.add(p);
       return true;
@@ -95,7 +95,7 @@ public class Bus
       {
         if(pick.x == x && pick.y == y)
         {
-          pickup.remove(pick);  
+          pickup.remove(pick);
           stopped = true;
           current = pick;
           path.removed = 0;

@@ -4,7 +4,7 @@ public class Pathfinder
   int removed = 0;
   ArrayList<Position> queue = new ArrayList<Position>();
 
-  //To add a new Position 
+  //To add a new Position
   public void addPosition(Position p)
   {
     boolean found = false;
@@ -36,7 +36,7 @@ public class Pathfinder
       {
         queue.remove(p);
         removed = p.no;
-        System.out.println("The bus goal has been updated to" + p.x + "," + p.y);
+        System.out.println("The bus goal has been updated to " + p.x + "," + p.y);
         return p;
       }
       p.wait++;
