@@ -9,7 +9,9 @@ import javafx.util.Duration;
 public class Visuals extends Application {
   final int r = 8;
   final Color stationColor =Color.WHITE;
-  final Color busColor = Color.YELLOW;
+  final Color busColor = Color.rgb(255, 191, 0);
+  final Color dropColor = Color.RED;
+  final Color pickColor = Color.LIGHTGREEN;
   Circle[] buses;
   Circle[] stations;
   Line[] roads;
@@ -65,7 +67,7 @@ public class Visuals extends Application {
                     for(int j = 0;j<g.stations.size();j++){
                         Position p2 = g.stations.get(j);
                         if(p.x == p2.x&&p.y==p2.y){
-                            stations[j].setFill(Color.GREEN);
+                            stations[j].setFill(pickColor);
                         }
                     }
                 }
@@ -74,8 +76,8 @@ public class Visuals extends Application {
                     for(int j = 0;j<g.stations.size();j++){
                         Position p2 = g.stations.get(j);
                         if(p.x == p2.x&&p.y==p2.y){
-                            if(stations[j].getFill()!=Color.GREEN){
-                                stations[j].setFill(Color.RED);
+                            if(stations[j].getFill()!=pickColor){
+                                stations[j].setFill(dropColor);
                             }
                             
                         }

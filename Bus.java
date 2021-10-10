@@ -95,6 +95,7 @@ public class Bus
       {
         if(pick.x == x && pick.y == y)
         {
+          pickup.remove(pick);  
           stopped = true;
           current = pick;
           path.removed = 0;
